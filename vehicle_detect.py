@@ -227,7 +227,7 @@ def object_detection_function():
                     cv2.FONT_HERSHEY_COMPLEX_SMALL,
                     )
 
-                cv2.imshow('vehicle detection', input_frame)
+                
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
@@ -235,8 +235,8 @@ def object_detection_function():
                 if csv_line != 'not_available':
                     with open('olcum.csv', 'a') as f:
                         writer = csv.writer(f)
-                        (size, color) = \
-                            csv_line.split(',')
+                        (size, color, direction, speed) = \
+                               csv_line.split(',')
                         writer.writerows([csv_line.split(',')])
             capture.release()
             cv2.destroyAllWindows()

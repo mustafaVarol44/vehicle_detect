@@ -4,8 +4,6 @@ from flask_bootstrap import Bootstrap
 from flask_uploads import UploadSet, configure_uploads, IMAGES, DATA, ALL
 from flask_sqlalchemy import SQLAlchemy
 
-from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
 
 
 import os
@@ -49,7 +47,7 @@ def index():
 def datauploads():
     if request.method == 'POST' and 'video' in request.files:
         file = request.files['video']
-        filename = secure_filename(file.filename)
+        filename = file.filename
         os.system('python vehicle_detect.py ' +filename)
         csv_file="olcum.csv"
         #file.save(os.path.join('upload', csv_file))
